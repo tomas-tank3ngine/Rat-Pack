@@ -1638,6 +1638,37 @@ PrefabInstance:
 --- !u!1001 &1805527911
 PrefabInstance:
   m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1951079731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 904c4147cb359484496399caf4c356e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoundManager
+  GameplayTimersActive: 0
+  currentTimer: 0
+  timerRunning: 0
+  roundProfiles:
+  - {fileID: 11400000, guid: 5418d8550b034de4f86abe6d3d004a5e, type: 2}
+  CurrentRound: 1
+  RatsToSpawn: 0
+  SpawnRate: 0
+  DifficultyModifier: 0
+  ratProfiles:
+  - {fileID: 11400000, guid: 133c5a61608a1e2428b8b0f20d207b33, type: 2}
+  - {fileID: 11400000, guid: cd209c15c96366f498ea04ee597ede3b, type: 2}
+  - {fileID: 11400000, guid: cd209c15c96366f498ea04ee597ede3b, type: 2}
+  - {fileID: 11400000, guid: cd209c15c96366f498ea04ee597ede3b, type: 2}
+  currentRat: {fileID: 0}
+  queuedRats: []
+  locations:
+  - {fileID: 994626402}
+  - {fileID: 204518286}
+  introDelay: 2
+--- !u!4 &1951079733
+Transform:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3

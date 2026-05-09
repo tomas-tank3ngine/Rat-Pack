@@ -4,15 +4,16 @@ public class RatController : MonoBehaviour
 {
     private Vector3 targetPosition;
     public bool isMoving;
-
+    public float patience;
+    private bool patienceActive;
 
     public float moveSpeed = 5f;
+    public int initialSpend;
+    public int tipMin;
+    public int tipMax;
+    public string preferredFlavour;
 
-    public void MoveTo(Vector3 position)
-    {
-        targetPosition = position;
-        isMoving = true;
-    }
+    
 
     private void Update()
     {
@@ -35,5 +36,34 @@ public class RatController : MonoBehaviour
         {
             isMoving = false;
         }
+
+        if (!patienceActive)
+            return;
+        patience -= Time.deltaTime;
+
+        if (patience <= 0)
+        {
+            patience = 0;
+
+            //todo
+            //OnPatienceExpired();
+        }
     }
+
+    public void MoveTo(Vector3 position)
+    {
+        targetPosition = position;
+        isMoving = true;
+    }
+
+    public void PausePatience()
+    {
+        patienceActive = false;
+    }
+
+    public void ResumePatience()
+    {
+        patienceActive = true;
+    }
+
 }
