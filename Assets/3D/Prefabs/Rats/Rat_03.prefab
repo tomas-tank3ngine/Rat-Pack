@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: f2b96ec9ffa220042bd56e48a1db3b8f, type: 2}
+    - target: {fileID: -926184877603499008, guid: 280e4021f73fbec4bb38aae56caa6d47, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9323b4edb8727234c88472dfe0c666e0, type: 2}
     - target: {fileID: 919132149155446097, guid: 280e4021f73fbec4bb38aae56caa6d47, type: 3}
       propertyPath: m_Name
       value: Rat_03
