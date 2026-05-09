@@ -7,6 +7,14 @@ public class RoundRatIntroState : RoundBaseState
     {
         round.MoveRatToCounter(round.currentRat);
         round.RunRatIntroSequence();
+        round.GameplayTimersActive = false;
+
+        if (round.currentRat != null)
+        {
+            round.currentRat
+                .GetComponent<RatController>()
+                .PausePatience();
+        }
     }
     public override void UpdateState(RoundManager round)
     {

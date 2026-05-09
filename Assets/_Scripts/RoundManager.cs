@@ -5,14 +5,14 @@ using System.Collections;
 public class RoundManager : MonoBehaviour
 {
     //public float timeBetweenSpawns = 10f; // Default patience duration for the current round
-    [SerializeField] public bool RoundRunning = false;
+    [SerializeField] public bool GameplayTimersActive = false;
 
 
     public float currentTimer;
     public bool timerRunning;
     public List<RoundConfigSO> roundProfiles;
 
-    [Header("Round Settings")]
+    [Header("Round Profile Settings")]
     [SerializeField] public int CurrentRound = 1;
     [SerializeField] public int RatsToSpawn;
     [SerializeField] public float SpawnRate;
@@ -53,7 +53,11 @@ public class RoundManager : MonoBehaviour
     void Update()
     {
         currentState.UpdateState(this);
-        if (!timerRunning)
+
+        if (!GameplayTimersActive) 
+            return;
+
+        if (!timerRunning) 
             return;
 
         currentTimer -= Time.deltaTime;
@@ -63,7 +67,7 @@ public class RoundManager : MonoBehaviour
             currentTimer = 0f;
             timerRunning = false;
 
-            OnTimerFinished();
+            OnSpawnTimerFinished();
         }
     }
 
@@ -80,9 +84,9 @@ public class RoundManager : MonoBehaviour
         timerRunning = true;
     }
 
-    public void OnTimerFinished()
+    public void OnSpawnTimerFinished()
     {
-        Debug.Log("Rat lost patience!");
+        Debug.Log("Rat Spawn Timer Finished - new rat should spawn");
         // lose star
         //destroy rat?
         //play animation
@@ -120,6 +124,12 @@ public class RoundManager : MonoBehaviour
 
             // Rename for organization
             rat.name = selectedProfile.ratName;
+            var ratController = rat.GetComponent<RatController>();
+            ratController.moveSpeed = 5;
+            ratController.preferredFlavour = selectedProfile.preferredFlavour.ToString();
+            ratController.initialSpend = selectedProfile.initialSpend;
+            ratController.tipMin = selectedProfile.tipMin;
+            ratController.tipMax = selectedProfile.tipMax;
 
             // Disable until spawned later
             rat.SetActive(false);

@@ -970,7 +970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 904c4147cb359484496399caf4c356e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoundManager
-  RoundRunning: 0
+  GameplayTimersActive: 0
   currentTimer: 0
   timerRunning: 0
   roundProfiles:
@@ -982,11 +982,14 @@ MonoBehaviour:
   ratProfiles:
   - {fileID: 11400000, guid: 133c5a61608a1e2428b8b0f20d207b33, type: 2}
   - {fileID: 11400000, guid: cd209c15c96366f498ea04ee597ede3b, type: 2}
+  - {fileID: 11400000, guid: cd209c15c96366f498ea04ee597ede3b, type: 2}
+  - {fileID: 11400000, guid: cd209c15c96366f498ea04ee597ede3b, type: 2}
   currentRat: {fileID: 0}
   queuedRats: []
   locations:
   - {fileID: 994626402}
   - {fileID: 204518286}
+  introDelay: 2
 --- !u!4 &1951079733
 Transform:
   m_ObjectHideFlags: 0
