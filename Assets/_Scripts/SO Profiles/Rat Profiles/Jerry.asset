@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91ce0d60b1ef6494ebed8020a7cba0ef, type: 3}
-  m_Name: Ronny
+  m_Name: Jerry
   m_EditorClassIdentifier: Assembly-CSharp::RatProfileSO
-  ratName: Ronny Rat (test)
-  preferredFlavour: Crumbly
+  ratName: Jerry
+  preferredFlavour: Mild
   patienceDuration: 30
-  dialogueLines:
-  - Ronny-licious!
-  ratPrefab: {fileID: 5842468796536407804, guid: c61de751511bf2749815dd02139d8267, type: 3}
+  dialogueLines: []
+  ratPrefab: {fileID: 8596086730506270957, guid: d99c58a3c80318d4cb4a092d6fc79bd2, type: 3}
