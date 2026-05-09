@@ -1,12 +1,13 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuButtons : MonoBehaviour
 {
     public GameObject CreditsWindow;
 
-    public void PlayGame()
+    public void MovetoScene(int sceneID) //PlayGame Button
     {
-        // Change scene
+        SceneManager.LoadScene(sceneID);
     }
 
     public void Credits()
@@ -36,18 +37,4 @@ public class MainMenuButtons : MonoBehaviour
         Debug.Log("Game is exiting");
     }
 
-
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
