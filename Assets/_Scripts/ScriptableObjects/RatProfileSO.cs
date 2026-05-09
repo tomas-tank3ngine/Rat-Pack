@@ -9,4 +9,5 @@ public class RatProfileSO : ScriptableObject
     public float patienceDuration;
     public List<string> dialogueLines;
     public GameObject ratPrefab;
+
 }
