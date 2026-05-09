@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class RoundManager : MonoBehaviour
 {
@@ -21,13 +22,14 @@ public class RoundManager : MonoBehaviour
     [SerializeField] public List<RatProfileSO> ratProfiles;
 
     [Header("Spawned Rats")]
+    [SerializeField] public GameObject currentRat;
     [SerializeField] public List<GameObject> queuedRats = new List<GameObject>();
 
-    [Header("Rat Placement Locations")]
+    [Header("Rat Checkpoint Locations")]
     [SerializeField] public List<GameObject> locations = new List<GameObject>();
 
 
-    [Header("Round State Manager")]
+    [Header("Round States")]
     RoundBaseState currentState;
     public RoundLoadState loadState = new RoundLoadState();
     public RoundStartState startState = new RoundStartState();
@@ -36,10 +38,11 @@ public class RoundManager : MonoBehaviour
     public RoundServingState servingState = new RoundServingState();
     public RoundEndState endState = new RoundEndState();
 
+    [Header("CoRoutine setup")]
+    public float introDelay = 1f;
+    private Coroutine activeRoutine;
 
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         currentState = loadState;
@@ -66,6 +69,7 @@ public class RoundManager : MonoBehaviour
 
     public void SwitchState(RoundBaseState newState)
     {
+        Debug.Log("State switch from: " + currentState + " > " + newState);
         currentState = newState;
         currentState.EnterState(this);
     }
@@ -126,7 +130,41 @@ public class RoundManager : MonoBehaviour
             // Set initial position to first location (waitlist spawn point)
             rat.transform.position = locations[0].transform.position;
 
-            Debug.Log("Queued rat: " + selectedProfile.ratName);
+            //Debug.Log("Queued rat: " + selectedProfile.ratName);
         }
+    }
+
+    public void MoveRatToCounter(GameObject rat)
+    {
+        rat.GetComponent<RatController>().MoveTo(locations[1].transform.position);
+    }
+
+    //todo
+    public void ShowUiMessage()
+    {
+        Debug.Log("UI MESSAGE: RAT ARRIVAL");
+    }
+
+    public void RunRatIntroSequence()
+    {
+        if (activeRoutine != null)
+            StopCoroutine(activeRoutine);
+
+        activeRoutine = StartCoroutine(RatIntroRoutine());
+    }
+
+    private IEnumerator RatIntroRoutine()
+    {
+        // Wait for movement to finish
+        while (currentRat != null && currentRat.GetComponent<RatController>().isMoving)
+        {
+            yield return null;
+        }
+
+        ShowUiMessage();
+
+        yield return new WaitForSeconds(introDelay);
+
+        SwitchState(cuttingState);
     }
 }
