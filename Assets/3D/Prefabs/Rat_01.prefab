@@ -62,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 9323b4edb8727234c88472dfe0c666e0, type: 2}
     - target: {fileID: 919132149155446097, guid: bd0188fbc67395c4895dcdb4bfdb9d59, type: 3}
       propertyPath: m_Name
-      value: SM_Rat_01
+      value: Rat_01
       objectReference: {fileID: 0}
     - target: {fileID: 2421855707862594039, guid: bd0188fbc67395c4895dcdb4bfdb9d59, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -78,22 +78,24 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bd0188fbc67395c4895dcdb4bfdb9d59, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5911067752650615304}
+      addedObject: {fileID: -5870452552933108294}
   m_SourcePrefab: {fileID: 100100000, guid: bd0188fbc67395c4895dcdb4bfdb9d59, type: 3}
---- !u!1 &2192503799419965483 stripped
+--- !u!1 &5714359443288735381 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bd0188fbc67395c4895dcdb4bfdb9d59, type: 3}
-  m_PrefabInstance: {fileID: 1345519963675438458}
+  m_PrefabInstance: {fileID: 4867285580868912068}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5911067752650615304
+--- !u!114 &-5870452552933108294
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2192503799419965483}
+  m_GameObject: {fileID: 5714359443288735381}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ecf2db35bfc14e1488b086420b02e7dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RatController
+  isMoving: 0
+  moveSpeed: 5

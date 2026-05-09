@@ -17,4 +17,4 @@ MonoBehaviour:
   patienceDuration: 30
   dialogueLines:
   - Ronny-licious!
-  ratPrefab: {fileID: 2192503799419965483, guid: 2073805bd67e5a048920e1b2159c7782, type: 3}
+  ratPrefab: {fileID: 5714359443288735381, guid: 07504a34c72ccf846a55d4f866e79c2f, type: 3}
