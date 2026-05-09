@@ -732,6 +732,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af29f25469af9b3439d9fcedf06628b2, type: 3}
+--- !u!1001 &929695053
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5842468796536407804, guid: c61de751511bf2749815dd02139d8267, type: 3}
+      propertyPath: m_Name
+      value: Rat_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512010202645732422, guid: c61de751511bf2749815dd02139d8267, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0039017664
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512010202645732422, guid: c61de751511bf2749815dd02139d8267, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.029881453
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512010202645732422, guid: c61de751511bf2749815dd02139d8267, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.826928
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512010202645732422, guid: c61de751511bf2749815dd02139d8267, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9961947
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512010202645732422, guid: c61de751511bf2749815dd02139d8267, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512010202645732422, guid: c61de751511bf2749815dd02139d8267, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512010202645732422, guid: c61de751511bf2749815dd02139d8267, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.08715578
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512010202645732422, guid: c61de751511bf2749815dd02139d8267, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512010202645732422, guid: c61de751511bf2749815dd02139d8267, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512010202645732422, guid: c61de751511bf2749815dd02139d8267, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -10
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c61de751511bf2749815dd02139d8267, type: 3}
 --- !u!1001 &935530336
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -742,7 +799,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4901793329021183023, guid: 07504a34c72ccf846a55d4f866e79c2f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.517
+      value: 0.82
       objectReference: {fileID: 0}
     - target: {fileID: 4901793329021183023, guid: 07504a34c72ccf846a55d4f866e79c2f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -949,7 +1006,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8935352744470258263, guid: d99c58a3c80318d4cb4a092d6fc79bd2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.3906653
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 8935352744470258263, guid: d99c58a3c80318d4cb4a092d6fc79bd2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -957,7 +1014,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8935352744470258263, guid: d99c58a3c80318d4cb4a092d6fc79bd2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.44591755
+      value: 0.37
       objectReference: {fileID: 0}
     - target: {fileID: 8935352744470258263, guid: d99c58a3c80318d4cb4a092d6fc79bd2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1801,3 +1858,4 @@ SceneRoots:
   - {fileID: 1537928280}
   - {fileID: 875735168}
   - {fileID: 1098753527}
+  - {fileID: 929695053}
