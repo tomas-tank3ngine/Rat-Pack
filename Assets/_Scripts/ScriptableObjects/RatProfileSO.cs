@@ -8,6 +8,6 @@ public class RatProfileSO : ScriptableObject
     public string preferredFlavour;
     public float patienceDuration;
     public List<string> dialogueLines;
-    public List<GameObject> ratPrefabs;
+    public GameObject ratPrefab;
 
 }
