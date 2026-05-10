@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 4cdb598fc254de346b8abffaa424399f
   - enabled: 1
-    path: Assets/Scenes/TestGameScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/CheeseShop.unity
+    guid: 8c4bebfc4e4da4b449ac2598fbb2f5f9
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
