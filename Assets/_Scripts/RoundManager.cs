@@ -12,6 +12,18 @@ public class RoundManager : MonoBehaviour
     public bool timerRunning;
     public List<RoundConfigSO> roundProfiles;
 
+    [Header("Camera View Settings")]
+    public CameraView currentView;
+    public CameraManager cameraManagerScript;
+    public List<Transform> cameraTargets = new List<Transform>();
+    public enum CameraView
+    {
+        Counter,
+        Cheese1,
+        Cheese2,
+        Cheese3
+    }
+
     [Header("Round Profile Settings")]
     [SerializeField] public int CurrentRound = 1;
     [SerializeField] public int RatsToSpawn;
@@ -42,11 +54,15 @@ public class RoundManager : MonoBehaviour
     public float introDelay = 1f;
     private Coroutine activeRoutine;
 
+    [Header("Cheese Controller Setup")]
+    [SerializeField] private CheeseController cheeseController;
+
 
     void Start()
     {
         currentState = loadState;
         currentState.EnterState(this);
+        cameraManagerScript = GetComponent<CameraManager>();
     }
 
     // Update is called once per frame
@@ -176,5 +192,82 @@ public class RoundManager : MonoBehaviour
         yield return new WaitForSeconds(introDelay);
 
         SwitchState(cuttingState);
+    }
+
+    public void ViewCounter()
+    {
+        ChangeCameraView(CameraView.Counter);
+    }
+
+    public void ViewCheese1()
+    {
+        ChangeCameraView(CameraView.Cheese1);
+    }
+
+    public void ViewCheese2()
+    {
+        ChangeCameraView(CameraView.Cheese2);
+    }
+
+    public void ViewCheese3()
+    {
+        ChangeCameraView(CameraView.Cheese3);
+    }
+
+    public void ChangeCameraView(CameraView cameraView)
+    {
+        if (cameraView == currentView)
+            return;
+
+        int index = (int)cameraView;
+
+        if (index >= cameraTargets.Count)
+        {
+            Debug.LogError(
+                "Camera target index out of range!"
+            );
+
+            return;
+        }
+
+        if (cameraTargets[index] == null)
+        {
+            Debug.LogError(
+                "Camera target is missing for: " +
+                cameraView
+            );
+
+            return;
+        }
+
+        Transform target = cameraTargets[index];
+
+        bool isCounterView =
+            cameraView == CameraView.Counter;
+
+        cameraManagerScript.SetView(
+            target,
+            isCounterView
+        );
+
+        // NEW:
+        switch (cameraView)
+        {
+            case CameraView.Cheese1:
+                cheeseController.SetActiveCheese(0);
+                break;
+
+            case CameraView.Cheese2:
+                cheeseController.SetActiveCheese(1);
+                break;
+
+            case CameraView.Cheese3:
+                cheeseController.SetActiveCheese(2);
+                break;
+        }
+
+        currentView = cameraView;
+
+        Debug.Log("Changed to: " + cameraView);
     }
 }

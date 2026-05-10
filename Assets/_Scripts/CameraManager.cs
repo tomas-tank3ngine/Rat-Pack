@@ -6,25 +6,36 @@ using System.Collections.Generic;
 public class CameraManager : MonoBehaviour
 {
     public Camera Camera;
+    //public RoundManager roundManagerScript;
 
     [Header("Camera Targets")]
-    public GameObject cheeseCuttingTarget;
-    public GameObject counterTarget;
+    //public Transform cheeseCuttingTarget;
 
     [Header("UI Buttons")]
     [SerializeField] private Button lookCounterButton;
     [SerializeField] private List<Button> lookCheeseButtons;
 
     [Header("Camera Movement")]
-    [SerializeField] private float rotationDuration = 0.15f;
+    private float movementDuration = 0.12f;
 
-    private Coroutine activeRotation;
+    private Coroutine activeMovement;
 
-    public void LookCounter()
+    public void SetView(Transform target, bool isCounterView)
     {
-        RotateTo(counterTarget.transform.rotation);
+        MoveToTarget(target);
 
-        // Enable all cheese buttons
+        lookCounterButton.interactable = !isCounterView;
+
+        foreach (Button button in lookCheeseButtons)
+        {
+            button.interactable = isCounterView;
+        }
+    }
+
+    /*
+    public void CounterView()
+    {
+        MoveToTarget(counterTarget);
         foreach (Button button in lookCheeseButtons)
         {
             button.interactable = true;
@@ -34,9 +45,11 @@ public class CameraManager : MonoBehaviour
         lookCounterButton.interactable = false;
     }
 
-    public void LookCheeseCut()
+    public void CheeseView(Transform target)
     {
-        RotateTo(cheeseCuttingTarget.transform.rotation);
+
+        roundManagerScript.ChangeCameraView(RoundManager.CameraView.Counter);
+        MoveToTarget(target);
 
         // Enable counter button
         lookCounterButton.interactable = true;
@@ -46,31 +59,49 @@ public class CameraManager : MonoBehaviour
         {
             button.interactable = false;
         }
-    }
 
-    private void RotateTo(Quaternion targetRotation)
+        roundManagerScript.ChangeCameraView(RoundManager.CameraView.Counter);
+    }
+    */
+
+    private void MoveToTarget(Transform target)
     {
-        if (activeRotation != null)
+        if (activeMovement != null)
         {
-            StopCoroutine(activeRotation);
+            StopCoroutine(activeMovement);
         }
 
-        activeRotation = StartCoroutine(
-            SmoothRotate(targetRotation)
+        activeMovement = StartCoroutine(
+            SmoothMove(target)
         );
     }
 
-    private IEnumerator SmoothRotate(Quaternion targetRotation)
+    private IEnumerator SmoothMove(Transform target)
     {
+        Vector3 startPosition = Camera.transform.position;
         Quaternion startRotation = Camera.transform.rotation;
+
+        Vector3 targetPosition = target.position;
+        Quaternion targetRotation = target.rotation;
 
         float elapsed = 0f;
 
-        while (elapsed < rotationDuration)
+        while (elapsed < movementDuration)
         {
             elapsed += Time.deltaTime;
 
-            float t = elapsed / rotationDuration;
+            float t = Mathf.SmoothStep(
+                0f,
+                1f,
+                elapsed / movementDuration
+            );
+
+            Camera.transform.position =
+                Vector3.Lerp(
+                    startPosition,
+                    targetPosition,
+                    t
+                );
 
             Camera.transform.rotation =
                 Quaternion.Slerp(
@@ -82,6 +113,7 @@ public class CameraManager : MonoBehaviour
             yield return null;
         }
 
+        Camera.transform.position = targetPosition;
         Camera.transform.rotation = targetRotation;
     }
 }
