@@ -54,6 +54,9 @@ public class RoundManager : MonoBehaviour
     public float introDelay = 1f;
     private Coroutine activeRoutine;
 
+    [Header("Cheese Controller Setup")]
+    [SerializeField] private CheeseController cheeseController;
+
 
     void Start()
     {
@@ -246,6 +249,22 @@ public class RoundManager : MonoBehaviour
             target,
             isCounterView
         );
+
+        // NEW:
+        switch (cameraView)
+        {
+            case CameraView.Cheese1:
+                cheeseController.SetActiveCheese(0);
+                break;
+
+            case CameraView.Cheese2:
+                cheeseController.SetActiveCheese(1);
+                break;
+
+            case CameraView.Cheese3:
+                cheeseController.SetActiveCheese(2);
+                break;
+        }
 
         currentView = cameraView;
 
