@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class RatController : MonoBehaviour
 {
+    public CustomerOrder order;
+
     private Vector3 targetPosition;
     public bool isMoving;
     public float patience;
@@ -13,7 +15,7 @@ public class RatController : MonoBehaviour
     public int tipMax;
     public string preferredFlavour;
 
-    
+
 
     private void Update()
     {
@@ -64,6 +66,15 @@ public class RatController : MonoBehaviour
     public void ResumePatience()
     {
         patienceActive = true;
+    }
+
+    public void GenerateOrder(string flavour, float weight)
+    {
+        order = new CustomerOrder
+        {
+            flavour = flavour,
+            requestedWeight = weight
+        };
     }
 
 }
