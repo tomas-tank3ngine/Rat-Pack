@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ce0d60b1ef6494ebed8020a7cba0ef, type: 3}
+  m_Name: Jerry
+  m_EditorClassIdentifier: Assembly-CSharp::RatProfileSO
+  ratName: Jerry
+  preferredFlavour: Mild
+  patienceDuration: 30
+  dialogueLines: []
+  ratPrefab: {fileID: 8596086730506270957, guid: d99c58a3c80318d4cb4a092d6fc79bd2, type: 3}
