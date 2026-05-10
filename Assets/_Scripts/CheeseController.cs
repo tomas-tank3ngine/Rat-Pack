@@ -15,7 +15,10 @@ public class CheeseController : MonoBehaviour
 
     private void Start()
     {
-        // Optional default cheese
+        cutSlider.onValueChanged.AddListener(
+            OnSliderChanged
+        );
+
         if (cheeseWheels.Length > 0)
         {
             SetActiveCheese(0);
@@ -41,13 +44,7 @@ public class CheeseController : MonoBehaviour
     public void ConfirmCut()
     {
         if (activeCheese == null)
-        {
-            Debug.LogError(
-                "No active cheese selected!"
-            );
-
             return;
-        }
 
         int amount =
             Mathf.RoundToInt(
@@ -72,5 +69,15 @@ public class CheeseController : MonoBehaviour
                 cutSlider.value,
                 activeCheese.RemainingSlices
             );
+    }
+    private void OnSliderChanged(float value)
+    {
+        if (activeCheese == null)
+            return;
+
+        int amount =
+            Mathf.RoundToInt(value);
+
+        activeCheese.PreviewCut(amount);
     }
 }
