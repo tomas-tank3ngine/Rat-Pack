@@ -13,7 +13,8 @@ public class RatProfileSO : ScriptableObject
     public int initialSpend;
     public int tipMin;
     public int tipMax;
-    
+    public int requestedWeight;
+
 
     [SerializeField] public FlavourType preferredFlavour;
 
