@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class CheeseWheel : MonoBehaviour
 {
-    [Header("Profile")]
-    [SerializeField] private CheeseProfileSO profile;
-
     [Header("Cheese State")]
     [SerializeField] private int maxSlices = 32;
 
@@ -15,26 +12,9 @@ public class CheeseWheel : MonoBehaviour
 
     public int RemainingSlices => remainingSlices;
 
-    public CheeseProfileSO Profile => profile;
-
     private void Start()
     {
-        UpdateVisual(remainingSlices);
-    }
-
-    public void PreviewCut(int cutAmount)
-    {
-        int previewSlices =
-            remainingSlices - cutAmount;
-
-        previewSlices =
-            Mathf.Clamp(
-                previewSlices,
-                0,
-                maxSlices
-            );
-
-        UpdateVisual(previewSlices);
+        UpdateVisual();
     }
 
     public void CutSlices(int amount)
@@ -48,10 +28,10 @@ public class CheeseWheel : MonoBehaviour
                 maxSlices
             );
 
-        UpdateVisual(remainingSlices);
+        UpdateVisual();
     }
 
-    private void UpdateVisual(int slicesRemaining)
+    private void UpdateVisual()
     {
         if (cheeseModels.Length == 0)
         {
@@ -62,6 +42,7 @@ public class CheeseWheel : MonoBehaviour
             return;
         }
 
+        // Disable all models
         for (int i = 0; i < cheeseModels.Length; i++)
         {
             if (cheeseModels[i] != null)
@@ -70,8 +51,9 @@ public class CheeseWheel : MonoBehaviour
             }
         }
 
+        // Convert remaining slices into visual index
         int index =
-            maxSlices - slicesRemaining;
+            maxSlices - remainingSlices;
 
         index = Mathf.Clamp(
             index,
@@ -79,9 +61,17 @@ public class CheeseWheel : MonoBehaviour
             cheeseModels.Length - 1
         );
 
+        // Enable correct model
         if (cheeseModels[index] != null)
         {
             cheeseModels[index].SetActive(true);
+        }
+        else
+        {
+            Debug.LogError(
+                "Missing cheese model at index: " +
+                index
+            );
         }
     }
 }
