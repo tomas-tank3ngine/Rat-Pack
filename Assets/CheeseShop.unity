@@ -1176,6 +1176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e5e6a90a27458841b44ea729ebd2c16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CheeseWheel
+  profile: {fileID: 11400000, guid: 1617508d78ed6694baac78fee16ef5ce, type: 2}
   maxSlices: 32
   remainingSlices: 32
   cheeseModels:
@@ -1289,6 +1290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e5e6a90a27458841b44ea729ebd2c16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CheeseWheel
+  profile: {fileID: 11400000, guid: 819577c052868aa4990eef69ae11c6a8, type: 2}
   maxSlices: 32
   remainingSlices: 32
   cheeseModels:
@@ -2780,6 +2782,40 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd2c9d108a29e4f49b55eae18fa93954, type: 3}
+--- !u!1 &1082821569
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1082821570}
+  m_Layer: 0
+  m_Name: --- CONTROLLERS / MANAGERS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1082821570
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082821569}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1200627140}
+  - {fileID: 1933468927}
+  - {fileID: 1796147295}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1116831234
 GameObject:
   m_ObjectHideFlags: 0
@@ -2857,6 +2893,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e5e6a90a27458841b44ea729ebd2c16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CheeseWheel
+  profile: {fileID: 11400000, guid: c4b0a884c8fb9dc4985ef35bf1747ff9, type: 2}
   maxSlices: 32
   remainingSlices: 32
   cheeseModels:
@@ -3031,7 +3068,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1200627138}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3043,7 +3080,7 @@ Transform:
   - {fileID: 602645824}
   - {fileID: 867453217}
   - {fileID: 543586340}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1082821570}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1200627141
 MonoBehaviour:
@@ -4074,7 +4111,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1796147294}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4082,7 +4119,7 @@ Transform:
   - {fileID: 1116831235}
   - {fileID: 470354635}
   - {fileID: 477065558}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1082821570}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1796147296
 MonoBehaviour:
@@ -4096,11 +4133,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 588dcc5579cf58b47a3210e36aa2a3ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CheeseController
+  roundManager: {fileID: 1200627139}
   cheeseWheels:
   - {fileID: 1116831236}
   - {fileID: 470354636}
   - {fileID: 477065559}
   cutSlider: {fileID: 1322006612}
+  starManager: {fileID: 1933468926}
 --- !u!1001 &1805527911
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4493,6 +4532,51 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1932608865}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1933468925
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1933468927}
+  - component: {fileID: 1933468926}
+  m_Layer: 0
+  m_Name: StarManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1933468926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933468925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 777f99b878dd4194d81610a474cc3bfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarManager
+  stars: 3
+--- !u!4 &1933468927
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933468925}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.76604444, z: -0, w: 0.64278764}
+  m_LocalPosition: {x: 3.154, y: 0.347, z: 0.5}
+  m_LocalScale: {x: 0.20000005, y: 0.2, z: -0.20000005}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1082821570}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1947887858
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16912,7 +16996,7 @@ GameObject:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1200627140}
+  - {fileID: 1082821570}
   - {fileID: 18314992}
   - {fileID: 833299404}
   - {fileID: 1657601963}
@@ -16938,4 +17022,3 @@ SceneRoots:
   - {fileID: 714713920}
   - {fileID: 1120661187}
   - {fileID: 1543093824}
-  - {fileID: 1796147295}

@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class CheeseWheel : MonoBehaviour
 {
+    [Header("Profile")]
+    [SerializeField] private CheeseProfileSO profile;
+
     [Header("Cheese State")]
     [SerializeField] private int maxSlices = 32;
 
@@ -11,6 +14,8 @@ public class CheeseWheel : MonoBehaviour
     [SerializeField] private GameObject[] cheeseModels;
 
     public int RemainingSlices => remainingSlices;
+
+    public CheeseProfileSO Profile => profile;
 
     private void Start()
     {
