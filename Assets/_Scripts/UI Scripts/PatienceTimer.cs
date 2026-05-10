@@ -19,9 +19,9 @@ public class PatienceTimer : MonoBehaviour
 
     void Update()
     {
-        patienceWheel.fillAmount = Rat.Patience; //updates the wheel
+        patienceWheel.fillAmount = Rat.patience; //updates the wheel
 
-        if(Rat.Patience == 0)
+        if(Rat.patience == 0)
         {
             patienceWheel.enabled = false;
         }
