@@ -6,32 +6,36 @@ using System.Collections.Generic;
 public class CameraManager : MonoBehaviour
 {
     public Camera Camera;
-    public RoundManager roundManagerScript;
+    //public RoundManager roundManagerScript;
 
     [Header("Camera Targets")]
     //public Transform cheeseCuttingTarget;
-    public Transform counterTarget;
 
     [Header("UI Buttons")]
     [SerializeField] private Button lookCounterButton;
     [SerializeField] private List<Button> lookCheeseButtons;
 
     [Header("Camera Movement")]
-    [SerializeField] private float movementDuration = 0.12f;
+    private float movementDuration = 0.12f;
 
     private Coroutine activeMovement;
 
-    private void Start()
+    public void SetView(Transform target, bool isCounterView)
     {
-        //todo maybe not needed
-        roundManagerScript = GameObject.FindGameObjectWithTag("RoundManagerTag").GetComponent<RoundManager>();
+        MoveToTarget(target);
+
+        lookCounterButton.interactable = !isCounterView;
+
+        foreach (Button button in lookCheeseButtons)
+        {
+            button.interactable = isCounterView;
+        }
     }
 
-    public void LookCounter()
+    /*
+    public void CounterView()
     {
         MoveToTarget(counterTarget);
-
-        // Enable all cheese buttons
         foreach (Button button in lookCheeseButtons)
         {
             button.interactable = true;
@@ -39,13 +43,12 @@ public class CameraManager : MonoBehaviour
 
         // Disable counter button
         lookCounterButton.interactable = false;
-
-        //Tell round manager which view we are in
-        roundManagerScript.currentView = "Counter";
     }
 
-    public void LookCheeseCut(Transform target)
+    public void CheeseView(Transform target)
     {
+
+        roundManagerScript.ChangeCameraView(RoundManager.CameraView.Counter);
         MoveToTarget(target);
 
         // Enable counter button
@@ -56,7 +59,10 @@ public class CameraManager : MonoBehaviour
         {
             button.interactable = false;
         }
+
+        roundManagerScript.ChangeCameraView(RoundManager.CameraView.Counter);
     }
+    */
 
     private void MoveToTarget(Transform target)
     {

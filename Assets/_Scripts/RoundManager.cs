@@ -12,16 +12,17 @@ public class RoundManager : MonoBehaviour
     public bool timerRunning;
     public List<RoundConfigSO> roundProfiles;
 
-    public string[] allViews = 
-    {
-        "Counter", "Cheese 1", "Cheese 2", "Cheese 3"
-    };
-
     [Header("Camera View Settings")]
-    public string currentView;
+    public CameraView currentView;
     public CameraManager cameraManagerScript;
-    public List<GameObject> cameraTargets = new List<GameObject>();
-
+    public List<Transform> cameraTargets = new List<Transform>();
+    public enum CameraView
+    {
+        Counter,
+        Cheese1,
+        Cheese2,
+        Cheese3
+    }
 
     [Header("Round Profile Settings")]
     [SerializeField] public int CurrentRound = 1;
@@ -190,35 +191,64 @@ public class RoundManager : MonoBehaviour
         SwitchState(cuttingState);
     }
 
-    public void ChangeCameraView(string cameraView)
+    public void ViewCounter()
+    {
+        ChangeCameraView(CameraView.Counter);
+    }
+
+    public void ViewCheese1()
+    {
+        ChangeCameraView(CameraView.Cheese1);
+    }
+
+    public void ViewCheese2()
+    {
+        ChangeCameraView(CameraView.Cheese2);
+    }
+
+    public void ViewCheese3()
+    {
+        ChangeCameraView(CameraView.Cheese3);
+    }
+
+    public void ChangeCameraView(CameraView cameraView)
     {
         if (cameraView == currentView)
-            Debug.Log("Already in this view");
             return;
 
-        if (cameraView == "Counter")
+        int index = (int)cameraView;
+
+        if (index >= cameraTargets.Count)
         {
-            cameraManagerScript.LookCounter();
-            currentView = cameraView;
+            Debug.LogError(
+                "Camera target index out of range!"
+            );
+
+            return;
         }
 
-        else if (cameraView == "Cheese1")
+        if (cameraTargets[index] == null)
         {
+            Debug.LogError(
+                "Camera target is missing for: " +
+                cameraView
+            );
 
-            currentView = cameraView;
+            return;
         }
-        
-        else if (cameraView == "Cheese2")
-        {
 
-            currentView = cameraView;
-        }
-        
-        else if (cameraView == "Cheese3")
-        {
+        Transform target = cameraTargets[index];
 
-            currentView = cameraView;
-        }
-        
+        bool isCounterView =
+            cameraView == CameraView.Counter;
+
+        cameraManagerScript.SetView(
+            target,
+            isCounterView
+        );
+
+        currentView = cameraView;
+
+        Debug.Log("Changed to: " + cameraView);
     }
 }
