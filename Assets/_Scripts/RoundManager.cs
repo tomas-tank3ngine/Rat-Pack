@@ -12,6 +12,17 @@ public class RoundManager : MonoBehaviour
     public bool timerRunning;
     public List<RoundConfigSO> roundProfiles;
 
+    public string[] allViews = 
+    {
+        "Counter", "Cheese 1", "Cheese 2", "Cheese 3"
+    };
+
+    [Header("Camera View Settings")]
+    public string currentView;
+    public CameraManager cameraManagerScript;
+    public List<GameObject> cameraTargets = new List<GameObject>();
+
+
     [Header("Round Profile Settings")]
     [SerializeField] public int CurrentRound = 1;
     [SerializeField] public int RatsToSpawn;
@@ -47,6 +58,7 @@ public class RoundManager : MonoBehaviour
     {
         currentState = loadState;
         currentState.EnterState(this);
+        cameraManagerScript = GetComponent<CameraManager>();
     }
 
     // Update is called once per frame
@@ -176,5 +188,37 @@ public class RoundManager : MonoBehaviour
         yield return new WaitForSeconds(introDelay);
 
         SwitchState(cuttingState);
+    }
+
+    public void ChangeCameraView(string cameraView)
+    {
+        if (cameraView == currentView)
+            Debug.Log("Already in this view");
+            return;
+
+        if (cameraView == "Counter")
+        {
+            cameraManagerScript.LookCounter();
+            currentView = cameraView;
+        }
+
+        else if (cameraView == "Cheese1")
+        {
+
+            currentView = cameraView;
+        }
+        
+        else if (cameraView == "Cheese2")
+        {
+
+            currentView = cameraView;
+        }
+        
+        else if (cameraView == "Cheese3")
+        {
+
+            currentView = cameraView;
+        }
+        
     }
 }
