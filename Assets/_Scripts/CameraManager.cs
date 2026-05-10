@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class CameraManager : MonoBehaviour
 {
     public Camera Camera;
+    public GameObject Manager;
 
     [Header("Camera Targets")]
     public GameObject cheeseCuttingTarget;
@@ -20,6 +21,10 @@ public class CameraManager : MonoBehaviour
 
     private Coroutine activeRotation;
 
+    private void Start()
+    {
+        Manager = GameObject.FindGameObjectWithTag("RoundManagerTag");
+    }
     public void LookCounter()
     {
         RotateTo(counterTarget.transform.rotation);
@@ -34,7 +39,7 @@ public class CameraManager : MonoBehaviour
         lookCounterButton.interactable = false;
     }
 
-    public void LookCheeseCut()
+    public void LookCheeseCut(int cheeseNum)
     {
         RotateTo(cheeseCuttingTarget.transform.rotation);
 
