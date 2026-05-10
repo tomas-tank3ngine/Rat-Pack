@@ -84,10 +84,30 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: ff076466c9148164da3f13e4c33d8be3, type: 2}
+    - target: {fileID: -7636963557827597600, guid: 854540f7e2027f4458cddf684b07cecb, type: 3}
+      propertyPath: m_Name
+      value: Dish_Left
+      objectReference: {fileID: 0}
+    - target: {fileID: -6464652307927150098, guid: 854540f7e2027f4458cddf684b07cecb, type: 3}
+      propertyPath: m_Name
+      value: Hinge
+      objectReference: {fileID: 0}
+    - target: {fileID: -5547542145952523856, guid: 854540f7e2027f4458cddf684b07cecb, type: 3}
+      propertyPath: m_Name
+      value: Topper
+      objectReference: {fileID: 0}
+    - target: {fileID: -4593130486874181694, guid: 854540f7e2027f4458cddf684b07cecb, type: 3}
+      propertyPath: m_Name
+      value: Chains_L_Inner
+      objectReference: {fileID: 0}
     - target: {fileID: -3233184894843762586, guid: 854540f7e2027f4458cddf684b07cecb, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: ff076466c9148164da3f13e4c33d8be3, type: 2}
+    - target: {fileID: -1014268425052216762, guid: 854540f7e2027f4458cddf684b07cecb, type: 3}
+      propertyPath: m_Name
+      value: Chains_L_Outer
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 854540f7e2027f4458cddf684b07cecb, type: 3}
       propertyPath: m_Name
       value: scale
@@ -96,10 +116,18 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: ff076466c9148164da3f13e4c33d8be3, type: 2}
+    - target: {fileID: 2300593632408891413, guid: 854540f7e2027f4458cddf684b07cecb, type: 3}
+      propertyPath: m_Name
+      value: Chains_R_Inner
+      objectReference: {fileID: 0}
     - target: {fileID: 2305302597091861298, guid: 854540f7e2027f4458cddf684b07cecb, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: ff076466c9148164da3f13e4c33d8be3, type: 2}
+    - target: {fileID: 2833892415248803418, guid: 854540f7e2027f4458cddf684b07cecb, type: 3}
+      propertyPath: m_Name
+      value: Dish_Right
+      objectReference: {fileID: 0}
     - target: {fileID: 3765108852280629433, guid: 854540f7e2027f4458cddf684b07cecb, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -108,6 +136,14 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: ff076466c9148164da3f13e4c33d8be3, type: 2}
+    - target: {fileID: 4444558461230370346, guid: 854540f7e2027f4458cddf684b07cecb, type: 3}
+      propertyPath: m_Name
+      value: Stand
+      objectReference: {fileID: 0}
+    - target: {fileID: 4603337159546281427, guid: 854540f7e2027f4458cddf684b07cecb, type: 3}
+      propertyPath: m_Name
+      value: Chains_R_Outer
+      objectReference: {fileID: 0}
     - target: {fileID: 6841003676236821729, guid: 854540f7e2027f4458cddf684b07cecb, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -120,6 +156,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: ff076466c9148164da3f13e4c33d8be3, type: 2}
+    - target: {fileID: 8487167654232718067, guid: 854540f7e2027f4458cddf684b07cecb, type: 3}
+      propertyPath: m_Name
+      value: Arm
+      objectReference: {fileID: 0}
     - target: {fileID: 9050817489936365762, guid: 854540f7e2027f4458cddf684b07cecb, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
