@@ -6,14 +6,15 @@ using static UnityEditor.LightingExplorerTableColumn;
 public class RatProfileSO : ScriptableObject
 {
     public string ratName;
-//    public float patienceDuration;
+    //    public float patienceDuration;
     public List<string> dialogueLines;
     public GameObject ratPrefab;
     //public float moveSpeed;
     public int initialSpend;
     public int tipMin;
     public int tipMax;
-    
+    public int requestedWeight;
+
 
     [SerializeField] public FlavourType preferredFlavour;
 

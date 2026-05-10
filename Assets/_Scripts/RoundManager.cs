@@ -55,7 +55,7 @@ public class RoundManager : MonoBehaviour
     private Coroutine activeRoutine;
 
     [Header("Cheese Controller Setup")]
-    [SerializeField] private CheeseController cheeseController;
+    [SerializeField] public CheeseController cheeseController;
 
 
     void Start()
@@ -70,10 +70,10 @@ public class RoundManager : MonoBehaviour
     {
         currentState.UpdateState(this);
 
-        if (!GameplayTimersActive) 
+        if (!GameplayTimersActive)
             return;
 
-        if (!timerRunning) 
+        if (!timerRunning)
             return;
 
         currentTimer -= Time.deltaTime;
@@ -129,7 +129,7 @@ public class RoundManager : MonoBehaviour
     //Using settings from the current round, spawn that many rats (choosing randomly from the selection of rat profiles,
     //and set inactive until they are spawned in th
     public void GenerateRatQueue()
-    {        
+    {
         for (int i = 0; i < RatsToSpawn; i++)
         {
             // Pick random rat profile
@@ -269,5 +269,11 @@ public class RoundManager : MonoBehaviour
         currentView = cameraView;
 
         Debug.Log("Changed to: " + cameraView);
+    }
+
+    public RatController GetCurrentRat()
+    {
+        if (currentRat == null) return null;
+        return currentRat.GetComponent<RatController>();
     }
 }
