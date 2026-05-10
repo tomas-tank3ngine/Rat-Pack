@@ -55,7 +55,7 @@ public class RoundManager : MonoBehaviour
     private Coroutine activeRoutine;
 
     [Header("Cheese Controller Setup")]
-    [SerializeField] public CheeseController cheeseController;
+    [SerializeField] private CheeseController cheeseController;
 
 
     void Start()
@@ -269,11 +269,5 @@ public class RoundManager : MonoBehaviour
         currentView = cameraView;
 
         Debug.Log("Changed to: " + cameraView);
-    }
-
-    public RatController GetCurrentRat()
-    {
-        if (currentRat == null) return null;
-        return currentRat.GetComponent<RatController>();
     }
 }
