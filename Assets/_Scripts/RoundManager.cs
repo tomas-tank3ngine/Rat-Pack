@@ -147,6 +147,20 @@ public class RoundManager : MonoBehaviour
             ratController.tipMin = selectedProfile.tipMin;
             ratController.tipMax = selectedProfile.tipMax;
 
+            CustomerOrder newOrder = new CustomerOrder();
+
+            newOrder.flavour =
+                selectedProfile.preferredFlavour.ToString();
+
+            // Randomized request weight
+            newOrder.requestedWeight =
+                Random.Range(
+                    selectedProfile.minRequestedWeight,
+                    selectedProfile.maxRequestedWeight + 1
+                );
+
+            ratController.order = newOrder;
+
             // Disable until spawned later
             rat.SetActive(false);
 

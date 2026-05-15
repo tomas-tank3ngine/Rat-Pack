@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: Gerome
   m_EditorClassIdentifier: Assembly-CSharp::RatProfileSO
   ratName: Gerome (test)
-  preferredFlavour: Salty
-  patienceDuration: 45
   dialogueLines: []
   ratPrefab: {fileID: 5714359443288735381, guid: 07504a34c72ccf846a55d4f866e79c2f, type: 3}
+  initialSpend: 0
+  tipMin: 0
+  tipMax: 0
+  minRequestedWeight: 40
+  maxRequestedWeight: 120
+  preferredFlavour: 0

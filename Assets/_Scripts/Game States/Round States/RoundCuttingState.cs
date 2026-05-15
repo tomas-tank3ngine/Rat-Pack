@@ -7,6 +7,7 @@ public class RoundCuttingState : RoundBaseState
     {
         round.GameplayTimersActive = true;
 
+        //todo for all rats, not just current rat
         if (round.currentRat != null)
         {
             round.currentRat
