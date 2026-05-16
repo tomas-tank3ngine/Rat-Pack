@@ -1,11 +1,10 @@
 using UnityEngine;
 
-public class RoundEndState : RoundBaseState
-{
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+public class RoundGameEndState : RoundBaseState
+{    
     public override void EnterState(RoundManager round)
     {
-        Debug.Log("Entered End Round State");
+        Debug.Log("Entered end game State");
 
         // show score screen
         // disable controls

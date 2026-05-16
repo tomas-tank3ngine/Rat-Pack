@@ -30,6 +30,7 @@ public class RoundManager : MonoBehaviour
     [SerializeField] public int RatsToSpawn;
     [SerializeField] public float SpawnRate;
     [SerializeField] public float DifficultyModifier;
+    public bool roundEnded = false;
 
     [Header("Rat Profile Holder")]
     [SerializeField] public List<RatProfileSO> ratProfiles;
@@ -50,6 +51,7 @@ public class RoundManager : MonoBehaviour
     public RoundCuttingState cuttingState = new RoundCuttingState();
     public RoundServingState servingState = new RoundServingState();
     public RoundEndState endState = new RoundEndState();
+    public RoundGameEndState gameEndState = new RoundGameEndState();
 
     [Header("CoRoutine setup")]
     public float introDelay = 1f;
@@ -74,6 +76,13 @@ public class RoundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (!roundEnded && IsRoundComplete())
+        {
+            EndRound();
+            return;
+        }
+
         currentState.UpdateState(this);
 
         if (!GameplayTimersActive)
@@ -301,11 +310,50 @@ public class RoundManager : MonoBehaviour
 
     public void EndRound()
     {
-        GameplayTimersActive = false;
-        timerRunning = false;
+        roundEnded = true;
 
         Debug.Log("ROUND ENDED");
 
-        SwitchState(endState);
+        CurrentRound++;
+
+        if (CurrentRound > roundProfiles.Count)
+        {
+            EndGame();
+            return;
+        }
+
+        StartNextRound();
+    }
+
+    public void EndGame()
+    {
+        roundEnded = true;
+
+        GameplayTimersActive = false;
+        timerRunning = false;
+
+        Debug.Log("GAME ENDED");
+
+        SwitchState(gameEndState);
+    }
+
+    public void StartNextRound()
+    {
+        Debug.Log("STARTING ROUND: " + CurrentRound);
+
+        roundEnded = false;
+
+        currentRat = null;
+        queuedRats.Clear();
+
+        LoadRoundSettings();   // IMPORTANT (you were missing this step)
+        GenerateRatQueue();
+
+        SwitchState(startState);
+    }
+
+    public bool IsRoundComplete()
+    {
+        return queuedRats.Count <= 0 && currentRat == null;
     }
 }
