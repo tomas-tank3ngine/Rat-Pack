@@ -11,6 +11,7 @@ public class RoundManager : MonoBehaviour
     public float currentTimer;
     public bool timerRunning;
     public List<RoundConfigSO> roundProfiles;
+    int CurrentRoundIndex = 0;
 
     [Header("Camera View Settings")]
     public CameraView currentView;
@@ -314,11 +315,9 @@ public class RoundManager : MonoBehaviour
 
         Debug.Log("ROUND ENDED");
 
-        CurrentRound++;
-
-        if (CurrentRound > roundProfiles.Count)
+        if (CurrentRound >= roundProfiles.Count)
         {
-            EndGame();
+            SwitchState(gameEndState);
             return;
         }
 
@@ -339,6 +338,8 @@ public class RoundManager : MonoBehaviour
 
     public void StartNextRound()
     {
+        CurrentRound++;
+
         Debug.Log("STARTING ROUND: " + CurrentRound);
 
         roundEnded = false;
@@ -346,10 +347,9 @@ public class RoundManager : MonoBehaviour
         currentRat = null;
         queuedRats.Clear();
 
-        LoadRoundSettings();   // IMPORTANT (you were missing this step)
-        GenerateRatQueue();
+        LoadRoundSettings(); // IMPORTANT: re-apply new round config
 
-        SwitchState(startState);
+        SwitchState(loadState);
     }
 
     public bool IsRoundComplete()
