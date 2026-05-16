@@ -8,4 +8,5 @@ public class RoundConfigSO : ScriptableObject
     public int ratCount;
     public float spawnRate;
     public float DifficultyModifier;
+    public float basePatience;
 }

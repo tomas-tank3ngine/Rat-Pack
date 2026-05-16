@@ -26,6 +26,7 @@ public class RoundManager : MonoBehaviour
 
     [Header("Round Profile Settings")]
     [SerializeField] public int CurrentRound = 1;
+    [SerializeField] public float basePatience = 30f;
     [SerializeField] public int RatsToSpawn;
     [SerializeField] public float SpawnRate;
     [SerializeField] public float DifficultyModifier;
@@ -146,6 +147,8 @@ public class RoundManager : MonoBehaviour
             ratController.initialSpend = selectedProfile.initialSpend;
             ratController.tipMin = selectedProfile.tipMin;
             ratController.tipMax = selectedProfile.tipMax;
+            ratController.patience = basePatience;
+            ratController.maxPatience = basePatience;
 
             CustomerOrder newOrder = new CustomerOrder();
 

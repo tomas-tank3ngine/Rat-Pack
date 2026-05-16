@@ -121,7 +121,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.933
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -286,7 +286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.010130465, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.14640439, g: 0.8867924, b: 0.8719877, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -298,8 +298,8 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 0.933
-  m_FillClockwise: 0
+  m_FillAmount: 1
+  m_FillClockwise: 1
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
@@ -486,8 +486,14 @@ MonoBehaviour:
   order:
     flavour: 
     requestedWeight: 0
+  patienceSlider: {fileID: 5745500282062773000}
+  fillColor: {fileID: 2110216139762920967}
+  highPatience: {r: 0.30980393, g: 0.8588236, b: 0.29411766, a: 1}
+  mediumPatience: {r: 1, g: 0.7176471, b: 0.15294118, a: 1}
+  lowPatience: {r: 1, g: 0.27058825, b: 0.27058825, a: 1}
   isMoving: 0
   patience: 0
+  maxPatience: 0
   moveSpeed: 5
   initialSpend: 0
   tipMin: 0
