@@ -20,4 +20,13 @@ public class StarManager : MonoBehaviour
 
         StarUi.GetComponent<Slider>().value += stars;
     }
+
+    public void RemoveStars(float amount)
+    {
+        stars -= amount;
+        stars =
+            Mathf.Clamp(stars, 0f, 5f);
+        Debug.Log("Stars now: " + stars);
+        StarUi.GetComponent<Slider>().value -= stars;
+    }
 }

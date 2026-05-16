@@ -10,6 +10,8 @@ public class RatController : MonoBehaviour
     [SerializeField] private Color mediumPatience;
     [SerializeField] private Color lowPatience;
 
+    [SerializeField] private StarManager starManager;
+
     private Vector3 targetPosition;
     public bool isMoving;
     public float patience;
@@ -55,7 +57,7 @@ public class RatController : MonoBehaviour
             patience = 0;
 
             //todo
-            //OnPatienceExpired();
+            starManager.RemoveStars(1);
         }
 
         // Update slider

@@ -58,6 +58,11 @@ public class RoundManager : MonoBehaviour
     [Header("Cheese Controller Setup")]
     [SerializeField] public CheeseController cheeseController;
 
+    [Header("Star Manager")]
+    [SerializeField] public StarManager StarManager;
+
+
+
 
     void Start()
     {
@@ -292,5 +297,15 @@ public class RoundManager : MonoBehaviour
     {
         if (currentRat == null) return null;
         return currentRat.GetComponent<RatController>();
+    }
+
+    public void EndRound()
+    {
+        GameplayTimersActive = false;
+        timerRunning = false;
+
+        Debug.Log("ROUND ENDED");
+
+        SwitchState(endState);
     }
 }
