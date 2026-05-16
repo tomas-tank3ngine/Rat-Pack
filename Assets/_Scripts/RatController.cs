@@ -1,12 +1,21 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RatController : MonoBehaviour
 {
     public CustomerOrder order;
+    [SerializeField] private Slider patienceSlider;
+    [SerializeField] private Image fillColor;
+    [SerializeField] private Color highPatience;
+    [SerializeField] private Color mediumPatience;
+    [SerializeField] private Color lowPatience;
+
+    [SerializeField] private StarManager starManager;
 
     private Vector3 targetPosition;
     public bool isMoving;
     public float patience;
+    public float maxPatience;
     private bool patienceActive;
 
     public float moveSpeed = 5f;
@@ -48,8 +57,11 @@ public class RatController : MonoBehaviour
             patience = 0;
 
             //todo
-            //OnPatienceExpired();
+            starManager.RemoveStars(1);
         }
+
+        // Update slider
+        UpdatePatienceUI();
     }
 
     public void MoveTo(Vector3 position)
@@ -75,6 +87,31 @@ public class RatController : MonoBehaviour
             flavour = flavour,
             requestedWeight = weight
         };
+    }
+
+    private void UpdatePatienceUI()
+    {
+        
+
+        float patiencePercent = patience / maxPatience;
+
+        patienceSlider.value = patiencePercent;
+
+        if (patienceSlider.value > 0.6f)
+        {
+            fillColor.color = highPatience;
+        }
+
+        else if (patienceSlider.value > 0.3f)
+        {
+            fillColor.color = mediumPatience;
+        }
+        
+        else
+        {
+            fillColor.color = lowPatience;
+        }
+
     }
 
 }

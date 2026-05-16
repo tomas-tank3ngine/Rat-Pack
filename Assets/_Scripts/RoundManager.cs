@@ -11,6 +11,7 @@ public class RoundManager : MonoBehaviour
     public float currentTimer;
     public bool timerRunning;
     public List<RoundConfigSO> roundProfiles;
+    int CurrentRoundIndex = 0;
 
     [Header("Camera View Settings")]
     public CameraView currentView;
@@ -26,9 +27,11 @@ public class RoundManager : MonoBehaviour
 
     [Header("Round Profile Settings")]
     [SerializeField] public int CurrentRound = 1;
+    [SerializeField] public float basePatience = 30f;
     [SerializeField] public int RatsToSpawn;
     [SerializeField] public float SpawnRate;
     [SerializeField] public float DifficultyModifier;
+    public bool roundEnded = false;
 
     [Header("Rat Profile Holder")]
     [SerializeField] public List<RatProfileSO> ratProfiles;
@@ -49,6 +52,7 @@ public class RoundManager : MonoBehaviour
     public RoundCuttingState cuttingState = new RoundCuttingState();
     public RoundServingState servingState = new RoundServingState();
     public RoundEndState endState = new RoundEndState();
+    public RoundGameEndState gameEndState = new RoundGameEndState();
 
     [Header("CoRoutine setup")]
     public float introDelay = 1f;
@@ -56,6 +60,11 @@ public class RoundManager : MonoBehaviour
 
     [Header("Cheese Controller Setup")]
     [SerializeField] public CheeseController cheeseController;
+
+    [Header("Star Manager")]
+    [SerializeField] public StarManager StarManager;
+
+
 
 
     void Start()
@@ -68,6 +77,13 @@ public class RoundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (!roundEnded && IsRoundComplete())
+        {
+            EndRound();
+            return;
+        }
+
         currentState.UpdateState(this);
 
         if (!GameplayTimersActive)
@@ -146,6 +162,8 @@ public class RoundManager : MonoBehaviour
             ratController.initialSpend = selectedProfile.initialSpend;
             ratController.tipMin = selectedProfile.tipMin;
             ratController.tipMax = selectedProfile.tipMax;
+            ratController.patience = basePatience;
+            ratController.maxPatience = basePatience;
 
             CustomerOrder newOrder = new CustomerOrder();
 
@@ -289,5 +307,53 @@ public class RoundManager : MonoBehaviour
     {
         if (currentRat == null) return null;
         return currentRat.GetComponent<RatController>();
+    }
+
+    public void EndRound()
+    {
+        roundEnded = true;
+
+        Debug.Log("ROUND ENDED");
+
+        if (CurrentRound >= roundProfiles.Count)
+        {
+            SwitchState(gameEndState);
+            return;
+        }
+
+        StartNextRound();
+    }
+
+    public void EndGame()
+    {
+        roundEnded = true;
+
+        GameplayTimersActive = false;
+        timerRunning = false;
+
+        Debug.Log("GAME ENDED");
+
+        SwitchState(gameEndState);
+    }
+
+    public void StartNextRound()
+    {
+        CurrentRound++;
+
+        Debug.Log("STARTING ROUND: " + CurrentRound);
+
+        roundEnded = false;
+
+        currentRat = null;
+        queuedRats.Clear();
+
+        LoadRoundSettings(); // IMPORTANT: re-apply new round config
+
+        SwitchState(loadState);
+    }
+
+    public bool IsRoundComplete()
+    {
+        return queuedRats.Count <= 0 && currentRat == null;
     }
 }

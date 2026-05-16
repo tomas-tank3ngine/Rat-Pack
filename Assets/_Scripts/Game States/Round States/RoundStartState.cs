@@ -6,6 +6,7 @@ public class RoundStartState : RoundBaseState
     {
         round.queuedRats[0].SetActive(true);
         round.currentRat = round.queuedRats[0];
+        round.queuedRats.RemoveAt(0);
         round.StartSpawnTimer();
         round.SwitchState(round.ratIntroState);
     }
