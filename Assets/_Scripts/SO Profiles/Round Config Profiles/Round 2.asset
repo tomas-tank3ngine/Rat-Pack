@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3467a5bcb106664b99e29598f9fc690, type: 3}
-  m_Name: Round 1
+  m_Name: Round 2
   m_EditorClassIdentifier: Assembly-CSharp::RoundConfigSO
   roundNumber: 1
-  ratCount: 3
+  ratCount: 2
   spawnRate: 30
   DifficultyModifier: 1
   basePatience: 0

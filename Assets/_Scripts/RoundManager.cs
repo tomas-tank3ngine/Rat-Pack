@@ -11,7 +11,6 @@ public class RoundManager : MonoBehaviour
     public float currentTimer;
     public bool timerRunning;
     public List<RoundConfigSO> roundProfiles;
-    int CurrentRoundIndex = 0;
 
     [Header("Camera View Settings")]
     public CameraView currentView;
@@ -77,6 +76,17 @@ public class RoundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (currentRat != null)
+        {
+            if (currentRat.GetComponent<RatController>().patience <= 0)
+            {
+                Debug.Log("Detected current rat = 0 patience");
+                StarManager.RemoveStars(1);
+                currentRat.GetComponent<RatController>().MoveTo(locations[2].transform.position);
+                currentRat = null;
+                SwitchState(startState);
+            }
+        }
 
         if (!roundEnded && IsRoundComplete())
         {
@@ -99,8 +109,9 @@ public class RoundManager : MonoBehaviour
             currentTimer = 0f;
             timerRunning = false;
 
+            //SwitchState(ratIntroState);
             OnSpawnTimerFinished();
-        }
+        }        
     }
 
     public void SwitchState(RoundBaseState newState)
@@ -119,9 +130,7 @@ public class RoundManager : MonoBehaviour
     public void OnSpawnTimerFinished()
     {
         Debug.Log("Rat Spawn Timer Finished - new rat should spawn");
-        // lose star
-        //destroy rat?
-        //play animation
+        
     }
 
     //Detect which round we are in and set the appropriate settings
@@ -164,6 +173,7 @@ public class RoundManager : MonoBehaviour
             ratController.tipMax = selectedProfile.tipMax;
             ratController.patience = basePatience;
             ratController.maxPatience = basePatience;
+            ratController.starManager = StarManager;
 
             CustomerOrder newOrder = new CustomerOrder();
 
@@ -196,6 +206,12 @@ public class RoundManager : MonoBehaviour
     {
         rat.GetComponent<RatController>().MoveTo(locations[1].transform.position);
     }
+    public void MoveRatToExit(GameObject rat)
+    {
+        rat.GetComponent<RatController>().MoveTo(locations[2].transform.position);
+    }
+
+
 
     //todo
     public void ShowUiMessage()
