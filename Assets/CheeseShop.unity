@@ -5680,6 +5680,7 @@ MonoBehaviour:
   RatsToSpawn: 0
   SpawnRate: 0
   DifficultyModifier: 0
+  roundEnded: 0
   ratProfiles:
   - {fileID: 11400000, guid: 133c5a61608a1e2428b8b0f20d207b33, type: 2}
   - {fileID: 11400000, guid: cd209c15c96366f498ea04ee597ede3b, type: 2}
@@ -5691,6 +5692,7 @@ MonoBehaviour:
   - {fileID: 1670846056}
   introDelay: 1
   cheeseController: {fileID: 1796147296}
+  StarManager: {fileID: 1509651696}
 --- !u!4 &1200627140
 Transform:
   m_ObjectHideFlags: 0
